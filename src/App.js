@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
+//importamos los componentes
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LayoutAuth from "./layout/LayoutAuth";
+import LayoutPrincipal from "./layout/LayoutPrincipal";
+import CrearUsuario from "./components/CrearUsuario";
+import { Fragment } from "react";
+//import Lo from './components/Lo';
+//import Dashboard from './components/Dashboard';
+//import Sidebars from './components/Sidebars';
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Navbar />
+
+      <div className="app">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LayoutAuth />}></Route>
+            <Route path="/dasboard" element={<LayoutPrincipal />}></Route>
+            <Route path="/crearUsuario" element={<CrearUsuario />}></Route>
+          </Routes>
+        </BrowserRouter>
+        <ToastContainer />
+      </div>
+    </Fragment>
   );
 }
 
